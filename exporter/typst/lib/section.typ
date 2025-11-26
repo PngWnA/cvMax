@@ -36,7 +36,7 @@
 ]
 
 #let GPA(GPA) = [
-  #small("GPA: " + GPA)
+  #small("GPA: " + str(GPA))
 ]
 
 #let lab(lab) = [
@@ -65,6 +65,12 @@
       service.team,
       align(right, [#service.position]),
 
+      grid.cell(
+        colspan: 2
+      )[
+        #service.mission
+      ],
+
       for detail in service.details [
         - #detail
       ]
@@ -88,7 +94,13 @@
         #strong(period(education))
       ]),
 
-      education.major.join(", "),
+      if ("advisor" in education) [
+        #small(education.major.join(", ") 
+          + " (지도교수: " + education.advisor + ")")
+      ] else [
+        #small(education.major.join(", "))
+      ],
+
       align(right, [
         #if ("degree" in education) [
           #education.degree.join(", ")
@@ -100,7 +112,7 @@
       ],
       align(right, [
         #if ("GPA" in education) [
-          #GPA(education.GPA)
+          #GPA(str(education.GPA))
         ]
       ]),
 
@@ -223,11 +235,8 @@
 
       award.award,
       align(right, [#award.team]),
-
       if ("field" in award) [
-        #for field in award.field [
-          - #field
-        ]
+        - #small("담당분야: " + award.field.join(", "))
       ],
     )
     #v(1em)
@@ -255,5 +264,6 @@
       ],
       align(right, [#certification.organization]),
     )
+    #v(1em)
   ]
 ]
