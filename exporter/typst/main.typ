@@ -2,7 +2,7 @@
 #import "lib/global.typ": *
 
 
-#let CV = yaml("../../CV.yaml")
+#let CV = yaml("../../CV/PngWnA.yaml")
 
 // Syntax for applying the configuration to the whole document
 #show: it => conf(it)
