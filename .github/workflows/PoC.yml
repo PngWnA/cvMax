@@ -17,12 +17,15 @@ jobs:
       - name: Install Typst
         uses: typst-community/setup-typst@v4
 
+      - name: Create directory for artifacts
+        run: mkdir -p ${{ github.workspace }}/artifacts
+
       - name: Compile CV
         run: |
-          typst compile --root . exporter/typst/main.typ
+          typst compile --root . exporter/typst/main.typ -o ${{ github.workspace }}/artifacts/PngWnA.pdf
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: main.pdf
-          path: artifacts/PngWnA.pdf
+          name: PngWnA.pdf
+          path: ${{ github.workspace }}/artifacts/PngWnA.pdf
