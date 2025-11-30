@@ -1,4 +1,4 @@
-name: Publish CV to Typst
+name: Proof of Concept using Typst
 
 on:
   push:
