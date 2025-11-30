@@ -1,0 +1,28 @@
+name: Publish CV to Typst
+
+on:
+  push:
+    paths:
+      - 'CV/*.yaml'
+  workflow_dispatch:
+
+jobs:
+  compile-cv:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile CV
+        run: |
+          typst compile exporter/typst/main.typ "artifacts/CV.pdf"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV.pdf
+          path: artifacts/CV.pdf
