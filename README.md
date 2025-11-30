@@ -7,31 +7,31 @@ cvMax lets you
 So instead of managing your CV like this:
 ```mermaid
 flowchart TD
-    CV[CV 변경사항 발생]
-    CV -- 페이지 수정 --> Notion[Notion]
-    CV -- 프로필 수정 --> LinkedIn[LinkedIn]
-    CV -- 코드 변경 --> LaTeX[LaTeX] --컴파일--> PDF[PDF]
+    CV[CV Change Occurs]
+    CV -- Update Page --> Notion[Notion]
+    CV -- Update Profile --> LinkedIn[LinkedIn]
+    CV -- Code Change --> LaTeX[LaTeX] --Compile--> PDF[PDF]
     CV -- ... --> ...[...]
 ```
 
 I'm changing it to this to make everyone's life easier:
 ```mermaid
 flowchart TD
-    CV[CV 변경사항 발생]
-    CV -- 파일 수정 --> YAML[YAML]
-    YAML -- 파일 변동 감지 --> Pipeline[배포 파이프라인]
-    Pipeline -- 배포 모듈 트리거 --> LaTeX[LaTeX 모듈] -- 컴파일 --> PDF[PDF]
-    Pipeline -- 배포 모듈 트리거 --> LinkedInAPI[LinkedIn API 모듈] -- 프로필 수정 --> LinkedIn[LinkedIn]
-    Pipeline -- 배포 모듈 트리거 --> NotionAPI[어떤 예쁜 모듈] -- 페이지 수정 --> Notion[Notion]
-    Pipeline -- 배포 모듈 트리거 --> ...[...] -- 배포 --> ..[...]
+    CV[CV Change Occurs]
+    CV -- Edit File --> YAML[YAML]
+    YAML -- Detect File Change --> Pipeline[Deployment Pipeline]
+    Pipeline -- Trigger Module --> LaTeX[LaTeX Module] -- Compile --> PDF[PDF]
+    Pipeline -- Trigger Module --> LinkedInAPI[LinkedIn API Module] -- Update Profile --> LinkedIn[LinkedIn]
+    Pipeline -- Trigger Module --> NotionAPI[Some Nice Module] -- Update Page --> Notion[Notion]
+    Pipeline -- Trigger Module --> ...[...] -- Deploy --> ..[...]
 
     subgraph cvMax
         YAML
         Pipeline
         subgraph modules
-            LaTeX[LaTeX 모듈]
-            LinkedInAPI[LinkedIn API 모듈]
-            NotionAPI[어떤 예쁜 모듈]
+            LaTeX[LaTeX Module]
+            LinkedInAPI[LinkedIn API Module]
+            NotionAPI[Some Nice Module]
             ...[...]
         end
     end
