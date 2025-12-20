@@ -17,6 +17,12 @@ jobs:
       - name: Install Typst
         uses: typst-community/setup-typst@v4
 
+      - name: Install KoPubWorld fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-kopubworld
+          fc-cache -fv
+
       - name: Create directory for artifacts
         run: mkdir -p ${{ github.workspace }}/artifacts
 
