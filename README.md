@@ -55,29 +55,29 @@ gantt
     Project Started                  :milestone, start, 2025-11-14, 0d
     First Module Usable            :milestone, first-module, 2025-11-30, 0d
     Core Pipeline Working!            :milestone, after pipeline-core, 2025-12-10, 0d
-    OK to let someone use it            :milestone, release-mvp, 2025-12-31, 0d
+    OK to let someone use it            :milestone, release-mvp, after linkedin-module, 0d
 
 
     %% =========================
     %% Modules
     %% =========================
     section Modules
-    Typst (replace LaTeX) Module for Proof of Concept        :active, typst-module, after start, 14d
-    LinkedIn API Module              :active, linkedin-module, after pipeline-core, 14d
+    Typst (replace LaTeX) Module for Proof of Concept        :done, typst-module, after start, 14d
+    LinkedIn API Module              : linkedin-module, after pipeline-core, 14d
 
     %% =========================
     %% Foundation
     %% =========================
     section Foundation
-    Architecture Design       :active, arch-design, after typst-module, 5d
-    Pipeline Core (Use Github Action)     :active, pipeline-core, after arch-design, 3d
+    Architecture Re-Design       :active, arch-design, after 2025-12-31, 10d
+    Pipeline Core (Use Github Action)     :done, pipeline-core, after arch-design, 3d
 
     %% =========================
     %% Polish
     %% =========================
     section Polish
     Testing & Examples               :active, testing, after start, until release-mvp
-    Documentation & User Guide        :active, docs, after linkedin-module, until release-mvp
+    Documentation & User Guide        : docs, after linkedin-module, until release-mvp
 ```
 
 # Ideas
