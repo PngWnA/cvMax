@@ -19,9 +19,12 @@ jobs:
 
       - name: Install KoPubWorld fonts
         run: |
-          sudo apt-get update
-          sudo apt-get install -y fonts-kopubworld
-          fc-cache -fv
+          sudo mkdir -p /usr/local/share/fonts/truetype/kopubworld
+          KOPUB_BASE="https://raw.githubusercontent.com/adrinerDP/font-kopubworld/master/fonts"
+          for f in KoPubWorld-Batang-Light.otf KoPubWorld-Batang-Medium.otf KoPubWorld-Batang-Bold.otf; do
+            sudo curl -fsSL -o "/usr/local/share/fonts/truetype/kopubworld/$f" "$KOPUB_BASE/$f"
+          done
+          sudo fc-cache -fv
 
       - name: Create directory for artifacts
         run: mkdir -p ${{ github.workspace }}/artifacts
