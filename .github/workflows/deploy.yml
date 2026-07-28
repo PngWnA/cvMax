@@ -1,4 +1,4 @@
-name: Proof of Concept using Typst
+name: Deploy CV
 
 on:
   push:
